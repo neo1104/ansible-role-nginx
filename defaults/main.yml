@@ -1,0 +1,35 @@
+---
+# defaults file for roles/nginx
+nginx_version: 1.10.2
+pcre_version: 8.37
+zlib_version: 1.2.8
+
+
+download_dir: /tmp
+targz: .tar.gz
+
+
+zlib_dir: "zlib-{{ zlib_version }}"
+pcre_dir: "pcre-{{ pcre_version }}"
+nginx_dir: "nginx-{{ nginx_version }}"
+
+zlib_targz: "zlib-{{ zlib_version }}{{ targz }}"
+pcre_targz: "pcre-{{ pcre_version }}{{ targz }}"
+nginx_targz: "nginx-{{ nginx_version }}{{ targz }}"
+
+zlib_download_path: "http://zlib.net/{{ zlib_targz }}"
+pcre_download_path: "https://sourceforge.net/projects/pcre/files/pcre/{{ pcre_version }}/{{ pcre_targz }}/download"
+nginx_downlaod_path: "http://nginx.org/download/{{ nginx_targz }}"
+
+
+
+nginx_prefix_path: /usr/share/nginx
+nginx_conf_prefix_path: /etc/nginx
+nginx_conf_path: "{{ nginx_conf_prefix_path }}/nginx.conf"
+nginx_log_prefix_path: /var/log/nginx
+nginx_error_log_path: "{{ nginx_log_prefix_path }}/error.log"
+nginx_http_log_path: "{{ nginx_log_prefix_path }}/access.log"
+nginx_pid_path: /var/run/nginx.pid
+nginx_sbin_path:  /usr/sbin/nginx
+nginx_user: nginx
+nginx_group: nginx

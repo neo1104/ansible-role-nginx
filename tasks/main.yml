@@ -1,0 +1,13 @@
+---
+# tasks file for roles/nginx
+- name: get current nginx version
+  shell: nginx -v
+  register: nginx_current_ver
+  ignore_errors: True
+  changed_when: False
+
+- include: install.yml
+  when: nginx_version not in nginx_current_ver.stderr
+
+- include: configure.yml
+- include: service.yml

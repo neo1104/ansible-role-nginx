@@ -1,0 +1,40 @@
+---
+- name: copy nginx init.d script
+  template:
+    src: nginx.j2
+    dest: /etc/init.d/nginx
+    owner: root
+    group: root
+    mode: 0755
+
+- name: copy default main nginx.conf
+  template:
+    src: nginx.conf.j2
+    dest: "{{ nginx_conf_prefix_path }}/nginx.conf"
+    mode: 0644
+  notify:
+    - name: restart nginx service
+
+- name: copy default default.conf
+  template:
+    src: default.conf.j2
+    dest: "{{ nginx_conf_prefix_path }}/conf.d/default.conf"
+    mode: 0644
+  notify:
+    - name: restart nginx service
+
+- name: copy default ssl.conf
+  template:
+    src: ssl.conf.j2
+    dest: "{{ nginx_conf_prefix_path }}/conf.d/ssl.conf"
+    mode: 0644
+  notify:
+    - name: restart nginx service
+
+- name: copy default virtual.conf
+  template:
+    src: virtual.conf.j2
+    dest: "{{ nginx_conf_prefix_path }}/conf.d/virtual.conf"
+    mode: 0644
+  notify:
+    - name: restart nginx service
