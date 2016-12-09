@@ -7,7 +7,7 @@
   changed_when: False
 
 - include: install.yml
-  when: nginx_version not in nginx_current_ver.stderr
+  when: nginx_version not in nginx_current_ver.stderr or nginx_first_install
 
 - include: configure.yml
 - include: service.yml

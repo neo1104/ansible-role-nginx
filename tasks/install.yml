@@ -50,7 +50,7 @@
 
 - name: create nginx running user
   user:
-    name: nginx
+    name: "{{ nginx_user }}"
     createhome: no
     shell: /bin/nologin
 
