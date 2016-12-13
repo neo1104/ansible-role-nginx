@@ -6,8 +6,13 @@
   ignore_errors: True
   changed_when: False
 
-- include: install.yml
+
+- name: include install.yml when first install nginx service or not found spefified nginx version
+  include: install.yml
   when: nginx_version not in nginx_current_ver.stderr or nginx_first_install
 
-- include: configure.yml
-- include: service.yml
+- name: include configure.yml
+  include: configure.yml
+
+- name: include service.yml
+  include: service.yml

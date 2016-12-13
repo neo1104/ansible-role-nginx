@@ -3,7 +3,7 @@
   yum:
     name: openssl-devel
     state: present
-    update_cache: yes
+    update_cache: no
 
 - name: Download zlib library
   uri:
