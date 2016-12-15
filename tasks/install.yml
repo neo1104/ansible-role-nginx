@@ -60,7 +60,7 @@
     path: "{{ nginx_log_prefix_path }}"
     owner: "{{ nginx_user }}"
     group: "{{ nginx_group }}"
-    mode: 0700
+    mode: 0744
     state: directory
 
 #创建conf.d配置文件目录
@@ -82,4 +82,11 @@
   file:
     path: "{{ nginx_prefix_path }}/modules"
     mode: 0755
+    state: directory
+
+
+- name: make ssl cert directory
+  file:
+    path: "{{ nginx_prefix_path }}/ssl"
+    mode: 0700
     state: directory
